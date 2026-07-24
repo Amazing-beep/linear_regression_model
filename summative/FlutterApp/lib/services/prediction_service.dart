@@ -17,7 +17,7 @@ class PredictionException implements Exception {
 /// Service class responsible for communicating with the FastAPI prediction endpoint.
 class PredictionService {
   static const String defaultBaseUrl =
-      'https://linear-regression-model-summit.onrender.com';
+    'https://linear-regression-model-ln95.onrender.com';
   final http.Client _client;
 
   PredictionService({http.Client? client}) : _client = client ?? http.Client();
