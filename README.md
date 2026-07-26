@@ -369,10 +369,7 @@ The API is publicly accessible over HTTPS and accepts incoming HTTP requests fro
 
 ---
 
-## Screenshots
-
-> [!NOTE]
-> Screenshots placeholders for system UI views. Replace image paths with captured assets.
+## Screenshots`
 
 ### Flutter Home Screen & Form Inputs
 ![Flutter Home Screen](summative/linear_regression/images/flutter_home_screen.png)
