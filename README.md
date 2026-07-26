@@ -3,15 +3,6 @@
 An end-to-end Machine Learning, RESTful API, and cross-platform mobile application solution designed to predict high school student reading literacy assessment scores using demographic, behavioral, and academic predictors from the international PISA 2009 evaluation dataset.
 
 ---
-
-## Project Overview
-
-### What the Project Does
-The **PISA Reading Score Predictor** is an integrated machine learning solution comprising three core components:
-1. **Machine Learning Pipeline**: A multivariate regression pipeline developed using Scikit-Learn that preprocesses student data and predicts continuous reading assessment scores (`readingScore`).
-2. **FastAPI REST API**: A production-ready backend service exposing endpoints for real-time model inference (`POST /predict`) and dynamic model retraining (`POST /retrain`).
-3. **Flutter Mobile Application**: A modern, single-page cross-platform mobile interface enabling educators, administrators, and researchers to enter student characteristics, submit prediction requests, and view instant score estimations.
-
 ## Live Deployment
 
 **Render API**
@@ -24,6 +15,14 @@ https://linear-regression-model-ln95.onrender.com/docs
 
 ## Demo Video
 https://youtu.be/4aRkStB4aAA?si=gWZaCmqhgWlaQ1JP
+
+## Project Overview
+
+### What the Project Does
+The **PISA Reading Score Predictor** is an integrated machine learning solution comprising three core components:
+1. **Machine Learning Pipeline**: A multivariate regression pipeline developed using Scikit-Learn that preprocesses student data and predicts continuous reading assessment scores (`readingScore`).
+2. **FastAPI REST API**: A production-ready backend service exposing endpoints for real-time model inference (`POST /predict`) and dynamic model retraining (`POST /retrain`).
+3. **Flutter Mobile Application**: A modern, single-page cross-platform mobile interface enabling educators, administrators, and researchers to enter student characteristics, submit prediction requests, and view instant score estimations.
 
 ### The Problem It Solves
 Reading literacy is a foundational academic skill that strongly correlates with future academic success, economic opportunities, and cognitive development. Educational institutions and policymakers often lack objective, automated predictive tools to identify students at risk of low reading proficiency prior to high-stakes standardized assessment cycles. This system automates student risk assessment using standardized international evaluation data.
