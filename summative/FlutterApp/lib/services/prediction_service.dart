@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import '../models/prediction_request.dart';
 import '../models/prediction_response.dart';
@@ -37,6 +38,12 @@ class PredictionService {
         : base;
     final Uri uri = Uri.parse('$cleanBase/predict');
 
+    final requestBodyJson = jsonEncode(request.toJson());
+
+    // Debugging logs for tracing HTTP request lifecycle
+    debugPrint('[PredictionService] Sending POST request to: $uri');
+    debugPrint('[PredictionService] Request Body: $requestBodyJson');
+
     try {
       final response = await _client
           .post(
@@ -45,15 +52,19 @@ class PredictionService {
               'Content-Type': 'application/json',
               'Accept': 'application/json',
             },
-            body: jsonEncode(request.toJson()),
+            body: requestBodyJson,
           )
-          .timeout(const Duration(seconds: 15));
+          .timeout(const Duration(seconds: 60));
+
+      debugPrint('[PredictionService] Response Status Code: ${response.statusCode}');
+      debugPrint('[PredictionService] Response Body: ${response.body}');
 
       if (response.statusCode == 200) {
         try {
           final Map<String, dynamic> jsonMap = jsonDecode(response.body);
           return PredictionResponse.fromJson(jsonMap);
         } catch (e) {
+          debugPrint('[PredictionService] Error parsing success response: $e');
           throw const PredictionException(
             'Received invalid JSON response format from the server.',
           );
@@ -62,6 +73,7 @@ class PredictionService {
         try {
           final Map<String, dynamic> jsonMap = jsonDecode(response.body);
           final detail = jsonMap['detail'];
+          debugPrint('[PredictionService] Validation error detail: $detail');
           throw PredictionException('Validation Error (422): $detail');
         } catch (e) {
           if (e is PredictionException) rethrow;
@@ -70,29 +82,36 @@ class PredictionService {
           );
         }
       } else if (response.statusCode >= 500) {
+        debugPrint('[PredictionService] Server error ${response.statusCode}: ${response.body}');
         throw PredictionException(
           'Server Error (${response.statusCode}): The backend server encountered an error.',
         );
       } else {
+        debugPrint('[PredictionService] API request failed with status ${response.statusCode}');
         throw PredictionException(
           'API Request failed with HTTP status ${response.statusCode}.',
         );
       }
-    } on SocketException {
+    } on SocketException catch (e) {
+      debugPrint('[PredictionService] SocketException at $uri: $e');
       throw const PredictionException(
         'No internet connection. Please check your network connectivity and try again.',
       );
-    } on TimeoutException {
+    } on TimeoutException catch (e) {
+      debugPrint('[PredictionService] TimeoutException after 60s at $uri: $e');
       throw const PredictionException(
         'Request timed out. The server took too long to respond.',
       );
     } on http.ClientException catch (e) {
+      debugPrint('[PredictionService] ClientException at $uri: ${e.message}');
       throw PredictionException('Network communication error: ${e.message}');
-    } on FormatException {
+    } on FormatException catch (e) {
+      debugPrint('[PredictionService] FormatException at $uri: $e');
       throw const PredictionException(
         'Invalid response format received from the API server.',
       );
     } catch (e) {
+      debugPrint('[PredictionService] Unexpected exception at $uri: $e');
       if (e is PredictionException) rethrow;
       throw PredictionException(
         'An unexpected error occurred: ${e.toString()}',
