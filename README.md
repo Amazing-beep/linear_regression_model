@@ -14,7 +14,7 @@ An end-to-end Machine Learning, RESTful API, and cross-platform mobile applicati
 - https://linear-regression-model-ln95.onrender.com/docs
 
 ## Demo Video
-https://youtu.be/4aRkStB4aAA?si=gWZaCmqhgWlaQ1JP
+- https://youtu.be/4aRkStB4aAA?si=gWZaCmqhgWlaQ1JP
 
 ## Project Overview
 
