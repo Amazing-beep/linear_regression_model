@@ -369,7 +369,11 @@ The API is publicly accessible over HTTPS and accepts incoming HTTP requests fro
 
 ---
 
+<<<<<<< HEAD
 ## Screenshots
+=======
+## Screenshots`
+>>>>>>> 1fced0fd3be61468d1bf206eaba9f2cba00aba91
 
 ### Flutter Home Screen & Form Inputs
 ![Flutter Home Screen](summative/linear_regression/images/flutter_home_screen.png)
