@@ -1,17 +1,17 @@
 # PISA Reading Score Predictor: End-to-End Machine Learning System, FastAPI REST API, and Flutter Mobile Application
 
 An end-to-end Machine Learning, RESTful API, and cross-platform mobile application solution designed to predict high school student reading literacy assessment scores using demographic, behavioral, and academic predictors from the international PISA 2009 evaluation dataset.
-
 ---
+
 ## Live Deployment
 
 **Render API**
 
-https://linear-regression-model-ln95.onrender.com
+ - https://linear-regression-model-ln95.onrender.com
 
 **Swagger UI**
 
-https://linear-regression-model-ln95.onrender.com/docs
+- https://linear-regression-model-ln95.onrender.com/docs
 
 ## Demo Video
 https://youtu.be/4aRkStB4aAA?si=gWZaCmqhgWlaQ1JP
