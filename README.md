@@ -12,6 +12,16 @@ The **PISA Reading Score Predictor** is an integrated machine learning solution 
 2. **FastAPI REST API**: A production-ready backend service exposing endpoints for real-time model inference (`POST /predict`) and dynamic model retraining (`POST /retrain`).
 3. **Flutter Mobile Application**: A modern, single-page cross-platform mobile interface enabling educators, administrators, and researchers to enter student characteristics, submit prediction requests, and view instant score estimations.
 
+## Live Deployment
+
+**Render API**
+
+https://linear-regression-model-ln95.onrender.com
+
+**Swagger UI**
+
+https://linear-regression-model-ln95.onrender.com/docs
+
 ### The Problem It Solves
 Reading literacy is a foundational academic skill that strongly correlates with future academic success, economic opportunities, and cognitive development. Educational institutions and policymakers often lack objective, automated predictive tools to identify students at risk of low reading proficiency prior to high-stakes standardized assessment cycles. This system automates student risk assessment using standardized international evaluation data.
 
